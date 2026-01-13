@@ -27,6 +27,6 @@ app.post("/signup", async (req, res) => {
   });
 });
 
-app.listen(3002, () => {
-  console.log("Http server listening on port 3002!");
+app.listen(3000, () => {
+  console.log("Http server listening on port 3000!");
 });
