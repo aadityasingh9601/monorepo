@@ -14,11 +14,11 @@
   "license": "ISC",
   "type": "module",
   "devDependencies": {
-    "prisma": "^7.2.0",
+    "prisma": "^6.11.1",
     "@repo/typescript-config": "workspace:*"
   },
   "dependencies": {
-    "@prisma/client": "^7.2.0",
+    "@prisma/client": "^6.11.1",
     "@repo/typescript-config": "workspace:*"
   }
 }
