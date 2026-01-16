@@ -2,7 +2,7 @@ name: Deploy new commits to EC2
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
   ssh-to-ec2:
     runs-on: ubuntu-latest
