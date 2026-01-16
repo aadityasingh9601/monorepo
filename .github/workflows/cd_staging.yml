@@ -14,9 +14,10 @@ jobs:
           username: ${{ secrets.DEV_SSH_USERNAME }}
           key: ${{ secrets.DEV_SSH_KEY }}
           script: |
-            source ~/.nvm/nvm.sh &&
-            nvm use 24.12.0 &&
-            cd monorepo-dev
-            git pull origin main
-            npm run build
+            source ~/.nvm/nvm.sh 
+            nvm use 24.12.0 
+            cd monorepo-dev 
+            git pull origin main 
+            pnpm install 
+            pnpm run build 
             pm2 restart all
