@@ -1,0 +1,24 @@
+name: Deploy new commits to EC2
+on:
+  push:
+    branches:
+      - prod
+jobs:
+  ssh-to-ec2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: SSH to EC2 & Deploy new changes
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.PROD_SSH_HOST }}
+          username: ${{ secrets.PROD_SSH_USERNAME }}
+          key: ${{ secrets.PROD_SSH_KEY }}
+          script: |
+            source ~/.nvm/nvm.sh 
+            nvm use 24.12.0 
+            source ~/.bashrc
+            cd monorepo-prod
+            git pull origin prod
+            pnpm install 
+            pnpm run build 
+            pm2 restart all
