@@ -15,7 +15,7 @@ jobs:
           key: ${{ secrets.DEV_SSH_KEY }}
           script: |
             source ~/.nvm/nvm.sh &&
-            nvm use --lts &&
+            nvm use 24.12.0 &&
             cd monorepo-dev
             git pull origin main
             npm run build
