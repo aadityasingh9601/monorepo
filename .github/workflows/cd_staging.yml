@@ -1,0 +1,22 @@
+name: Deploy new commits to EC2
+on:
+  push:
+    branches:
+      - master
+jobs:
+  ssh-to-ec2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: SSH to EC2 & Deploy new changes
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DEV_SSH_HOST }}
+          username: ${{ secrets.DEV_SSH_USERNAME }}
+          key: ${{ secrets.DEV_SSH_KEY }}
+          script: |
+            source ~/.nvm/nvm.sh &&
+            nvm use --lts &&
+            cd monorepo-dev
+            git pull origin main
+            npm run build
+            pm2 restart all
