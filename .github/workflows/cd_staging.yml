@@ -17,7 +17,8 @@ jobs:
             source ~/.nvm/nvm.sh 
             nvm use 24.12.0 
             cd monorepo-dev 
-            git pull origin main 
+            git pull origin main &&
+            export PATH=/home/ubuntu/.local/share/pnpm/pnpm
             pnpm install 
             pnpm run build 
             pm2 restart all
